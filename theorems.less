@@ -33,6 +33,13 @@ length(@theoremEnvironmentNames) is the total number of loops*/
       margin-top: 4pt;
       margin-bottom: 4pt;
    }
+   .@{nameOfClass} > p:first-child:before
+   {
+      content:"@{nameOfClass}. ";
+      display: inline;
+      font-weight: bold;
+   } 
+
    /*Here we increment our loop*/
    .loopingClass(@index + 1);
 }
@@ -45,47 +52,3 @@ throws an "unexpected input" error??  No. It turns out this is unnecessary (??)
 
 /*This calls the loop and starts it. */
 .loopingClass(1);
-
-
-.definition > p:first-child:before
-{
-    content:"Definition. hahaha ";
-    display: inline;
-    font-weight: bold;
-} 
-
-.theorem > p:first-child:before
-{
-    content:"Theorem. ";
-    display: inline;
-    font-weight: bold;
-} 
-
-.model-solution > p:first-child:before
-{
-    content:"Model Solution. ";
-    display: inline;
-    font-weight: bold;
-} 
-
-.example > p:first-child:before
-{
-    content:"Example. ";
-    display: inline;
-    font-weight: bold;
-} 
-
-.observation > p:first-child:before
-{
-    content:"Observation. ";
-    display: inline;
-    font-weight: bold;
-} 
-
-.warning > p:first-child:before
-{
-    content:"Warning. ";
-    display: inline;
-    font-weight: bold;
-} 
-
