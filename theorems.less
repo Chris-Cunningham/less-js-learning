@@ -17,12 +17,14 @@ blue blue blue blue;
 /*The faux loop the doesn't end up in the final css
 @index is the counter
 @numInserts is the total number of loops*/
+
+
 .loopingClass (@index) when (@index <= length(@theoremEnvironmentNames)){
 
    /*This is the created ID with the index appended to it
    You can also do this with classes such as if 
    we had had ".insert@{index}"*/
-   .extract(@theoremEnvironmentNames,@index){
+   (~".extract(@theoremEnvironmentNames,@index")) {
       /*Here are our properties that get adjusted with the index*/
       background-color: extract(@theoremEnvironmentColors, @index);
       /*These are the things that are common to all environments */
@@ -35,6 +37,10 @@ blue blue blue blue;
    /*Here we increment our loop*/
    .loopingClass(@index + 1);
 }
+
+/* This doesn't feel like it should be necessary; does it end the loop? */
+.loopingClass (0) {}
+
 /*This calls the loop and starts it, I started from 1
 since I didn't want to lead a className starting from 0,
 But there is no real reason not to.  Just remember to
