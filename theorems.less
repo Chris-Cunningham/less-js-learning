@@ -16,10 +16,8 @@ blue blue blue blue;
 
 /*The faux loop the doesn't end up in the final css
 @index is the counter
-@numInserts is the total number of loops*/
-
-
-.loopingClass (@index) when (@index < length(@theoremEnvironmentNames)){
+length(@theoremEnvironmentNames) is the total number of loops*/
+.loopingClass (@index) when (@index <= length(@theoremEnvironmentNames)){
 
    /*This is the name of the class*/
    @nameOfClass: extract(@theoremEnvironmentNames, @index);
@@ -41,12 +39,12 @@ blue blue blue blue;
 
 /* Aha -- without this, you end up trying to execute the code above
 when @index is out of the bounds declared by the when clause. This 
-throws an "unexpected input" error??  No.
+throws an "unexpected input" error??  No. It turns out this is unnecessary (??)
     .loopingClass (20) {} 
 */
 
 /*This calls the loop and starts it. */
-.loopingClass(0);
+.loopingClass(1);
 
 
 .definition > p:first-child:before
