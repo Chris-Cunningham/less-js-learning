@@ -26,7 +26,7 @@ length(@theoremEnvironmentNames) is the total number of loops*/
    .@{nameOfClass} { 
 
       /*Here are our properties that get adjusted with the index*/
-      background-color: extract(@theoremEnvironmentColors, @index);
+      background-color: lighten(extract(@theoremEnvironmentColors, @index),80%);
       /*These are the things that are common to all environments */
       border-radius: 4pt;
       padding: 4pt;
