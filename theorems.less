@@ -28,13 +28,10 @@ length(@theoremEnvironmentNames) is the total number of loops*/
 
       /*Here are our properties that get adjusted with the index*/
       /* background-color: extract(@theoremEnvironmentColors, @index); */
-      background-color: hsl(hue(@colorOfClass),100%,90%);
+      background-color: hsl(hue(@colorOfClass),100%,75%);
 
       /*These are the things that are common to all environments */
-      border-radius: 4pt;
-      padding: 4pt;
-      margin-top: 4pt;
-      margin-bottom: 4pt;
+      border-radius: 4pt; padding: 4pt; margin-top: 4pt; margin-bottom: 4pt;
    }
    .@{nameOfClass} > p:first-child:before
    {
