@@ -24,7 +24,7 @@ blue blue blue blue;
    /*This is the created ID with the index appended to it
    You can also do this with classes such as if 
    we had had ".insert@{index}"*/
-   (~".extract(@theoremEnvironmentNames,@index")) {
+   .extract(@theoremEnvironmentNames,@index")) {
       /*Here are our properties that get adjusted with the index*/
       background-color: extract(@theoremEnvironmentColors, @index);
       /*These are the things that are common to all environments */
