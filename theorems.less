@@ -1,19 +1,60 @@
 
+
+
+
+/*"Array" of names and colors to select from id*/
+@theoremEnvironmentNames:
+theorem axiom conjecture corollary proposition lemma claim condition
+warning paradox
+example model-solution
+observation fact remark acknowledgement algorithm notation criterion
+idea definition conclusion summary;
+
+@theoremEnvironmentColors:
+green green green green green green green green
+red red
+yellow yellow
+cyan cyan cyan cyan cyan cyan cyan
+blue blue blue blue;
+
+
+/*The faux loop the doesn't end up in the final css
+@index is the counter
+@numInserts is the total number of loops*/
+.loopingClass (@index) when (@index <= length(@theoremEnvironmentNames){
+
+   /*These are the things that are common to all environments */
+   border-radius: 4pt;
+   padding: 4pt;
+   margin-top: 4pt;
+   margin-bottom: 4pt;
+
+   /*This is the created ID with the index appended to it
+   You can also do this with classes such as if 
+   we had had ".insert@{index}"*/
+   #extract(@theoremEnvironmentNames,@{index}){
+      /*Here are our properties that get adjusted with the index*/
+      background-color: extract(@theoremEnvironmentColors, @index);
+   }
+   /*Here we increment our loop*/
+   .loopingClass(@index + 1);
+}
+/*This calls the loop and starts it, I started from 1
+since I didn't want to lead a className starting from 0,
+But there is no real reason not to.  Just remember to
+Change your conditional from "<=" to "<"*/
+.loopingClass(1);
+
+
+
+
+
 .definition > p:first-child:before
 {
     content:"Definition. hahaha ";
     display: inline;
     font-weight: bold;
 } 
-
-.definition {
-    background-color: #EFE;
-    border-radius: 4pt;
-    padding: 4pt;
-    margin-top: 4pt;
-    margin-bottom: 4pt;
-}
-
 
 .theorem > p:first-child:before
 {
@@ -22,29 +63,12 @@
     font-weight: bold;
 } 
 
-.theorem {
-    background-color: #DFD;
-    border-radius: 4pt;
-    padding: 4pt;
-    margin-top: 4pt;
-    margin-bottom: 4pt;
-}
-
-
 .model-solution > p:first-child:before
 {
     content:"Model Solution. ";
     display: inline;
     font-weight: bold;
 } 
-
-.model-solution {
-    background-color: #FFB;
-    border-radius: 4pt;
-    padding: 4pt;
-    margin-top: 4pt;
-    margin-bottom: 4pt;
-}
 
 .example > p:first-child:before
 {
@@ -53,28 +77,12 @@
     font-weight: bold;
 } 
 
-.example {
-    background-color: #FFB;
-    border-radius: 4pt;
-    padding: 4pt;
-    margin-top: 4pt;
-    margin-bottom: 4pt;
-}
-
 .observation > p:first-child:before
 {
     content:"Observation. ";
     display: inline;
     font-weight: bold;
 } 
-
-.observation {
-    background-color: #DDF;
-    border-radius: 4pt;
-    padding: 4pt;
-    margin-top: 4pt;
-    margin-bottom: 4pt;
-}
 
 .warning > p:first-child:before
 {
@@ -83,19 +91,3 @@
     font-weight: bold;
 } 
 
-.warning {
-    background-color: #FDD;
-    border-radius: 4pt;
-    padding: 4pt;
-    margin-top: 4pt;
-    margin-bottom: 4pt;
-}
-
-.question {
-  margin-bottom: 16pt;
-}
-
-.solution {
-  margin-top: 4pt;
-  margin-bottom: 8pt;
-}
