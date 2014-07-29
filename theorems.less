@@ -22,7 +22,10 @@ blue blue blue blue;
 .loopingClass (@index) when (@index < length(@theoremEnvironmentNames)){
 
    /*This is the name of the class*/
-   .extract(@theoremEnvironmentNames,@index) {
+   
+   .definition{
+   /*.extract(@theoremEnvironmentNames,@index) { */
+
       /*Here are our properties that get adjusted with the index*/
       background-color: extract(@theoremEnvironmentColors, @index);
       /*These are the things that are common to all environments */
