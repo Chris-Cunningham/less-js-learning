@@ -19,16 +19,16 @@ blue blue blue blue;
 length(@theoremEnvironmentNames) is the total number of loops*/
 .loopingClass (@index) when (@index =< length(@theoremEnvironmentNames)){
 
-   /*This is the name of the class*/
+   /*Extract from arrays the name and color of the class*/
    @nameOfClass: extract(@theoremEnvironmentNames, @index);
-   
-   /* .definition{ */
+   @colorOfClass: extract(@theoremEnvironmentColors, @index);
+      
+
    .@{nameOfClass} { 
 
       /*Here are our properties that get adjusted with the index*/
       /* background-color: extract(@theoremEnvironmentColors, @index); */
-      @startingColor:  extract(@theoremEnvironmentColors, @index);
-      background-color: hsl(hue(@startingColor),saturation(@startingColor),90%);
+      background-color: hsl(hue(@colorOfClass),100%,90%);
 
       /*These are the things that are common to all environments */
       border-radius: 4pt;
