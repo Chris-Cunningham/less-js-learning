@@ -42,9 +42,6 @@ We want to stop when the index reaches the end of the list of environments. */
    @nameOfClass: extract(@theoremEnvironments, @index);
    @colorOfClass: extract(@theoremEnvironments, @index+1);
    
-   body {
-      counter-reset: theorem@{nameOfClass}  /* Make a CSS counter unique to each type of environment. */
-   }
    .@{nameOfClass} { 
 
       /* Take the color of the class, saturate it to a fixed value, and lighten it to a fixed value (see top of file) */
