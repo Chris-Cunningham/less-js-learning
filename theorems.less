@@ -43,9 +43,10 @@ We want to stop when the index reaches the end of the list of environments. */
    /*Extract from the list the name and color of the class*/
    @nameOfClass: extract(@thisTheoremEnvironment, 1);
    @colorOfClass: extract(@thisTheoremEnvironment, 2);
+   @counterToIncrement: @nameOfClass;   /* I can imagine us wanting some of the environments to share a counter, in which case you would put something else here. */
 
    body {
-      counter-reset: @nameOfClass;     /* The body needs to initialize all the counters. */
+      counter-reset: @counterToIncrement;     /* The body needs to initialize all the counters. */
    }
    
    .@{nameOfClass} { 
