@@ -51,7 +51,7 @@ We want to stop when the index reaches the end of the list of environments. */
    .@{nameOfClass} > p:first-child:before
    {
       counter-increment: @{nameOfClass};
-      content:"@{nameOfClass} " counter(@{nameOfClass}) ".";
+      content:"@{nameOfClass} ";
       display: inline;
       text-transform: capitalize;   /* CSS here only applies to one word, like "Theorem." or "Example." */
       font-weight: bold; 
