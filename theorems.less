@@ -29,12 +29,14 @@ algorithm yellow
 notation yellow
 criterion yellow;
 
+body{
+   counter-reset: observation;
+}
+
 /* This is a faux loop that doesn't end up in the final css. 
 Writing this does not actually cause the loop to be executed; see below
 for that. @index is the counter variable, but .loop is not a keyword!
 We want to stop when the index reaches the end of the list of environments. */
-
-
 
 .loop (@index) when (@index =< length(@theoremEnvironments)){
 
