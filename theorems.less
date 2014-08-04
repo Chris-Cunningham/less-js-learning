@@ -50,12 +50,14 @@ We want to stop when the index reaches the end of the list of environments. */
       /* Take the color of the class, saturate it to a fixed value, and lighten it to a fixed value (see top of file) */
       background-color: hsl(hue(@colorOfClass),@theoremEnvironmentSaturation,@theoremEnvironmentLightness);
 
+      /* Increment the counter for this theorem type. */
+      counter-increment: @nameOfClass;
+
       /*These are the things that are common to all environments. */
       border-radius: 4pt; padding: 4pt; margin-top: 4pt; margin-bottom: 4pt;
    }
    .@{nameOfClass} > p:first-child:before
    {
-      counter-increment: @nameOfClass;
       content:"@{nameOfClass} " counter(@nameOfClass) ". ";
       display: inline;
       text-transform: capitalize;   /* CSS here only applies to one word, like "Theorem." or "Example." */
