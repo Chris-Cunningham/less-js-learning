@@ -42,7 +42,7 @@ We want to stop when the index reaches the end of the list of environments. */
    @colorOfClass: extract(@theoremEnvironments, @index+1);
 
    body {
-      counter-reset: observation;
+      counter-reset: @nameOfClass;
    }
    
    .@{nameOfClass} { 
