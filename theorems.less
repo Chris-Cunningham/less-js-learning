@@ -6,27 +6,27 @@ The colors that you type below in theoremEnvironments will all get standardized 
 /*"Array" of names and colors to select from. Be careful that every environment has a color, 
 and don't choose white or black since the "saturation" and "hue" of white and black don't behave well. */
 @theoremEnvironments:
-theorem green
-axiom green
-conjecture green
-corollary green
-proposition green 
-lemma green
-claim green
-condition green
-idea green
-definition green 
-conclusion green
-summary green
-warning red
-paradox red
-example yellow
-observation yellow
-fact yellow
-remark yellow
-acknowledgement yellow
-algorithm yellow
-notation yellow
+theorem green,
+axiom green,
+conjecture green,
+corollary green,
+proposition green,
+lemma green,
+claim green,
+condition green,
+idea green,
+definition green,
+conclusion green,
+summary green,
+warning red,
+paradox red,
+example yellow,
+observation yellow,
+fact yellow,
+remark yellow,
+acknowledgement yellow,
+algorithm yellow,
+notation yellow,
 criterion yellow;
 
 
@@ -37,12 +37,15 @@ We want to stop when the index reaches the end of the list of environments. */
 
 .loop (@index) when (@index =< length(@theoremEnvironments)){
 
-   /*Extract from arrays the name and color of the class*/
-   @nameOfClass: extract(@theoremEnvironments, @index);
-   @colorOfClass: extract(@theoremEnvironments, @index+1);
+   /* theoremEnvironments above is a list of lists. Get the correct list: */
+   @thisTheoremEnvironment: extract(@theoremEnvironments, @index);
+
+   /*Extract from the list the name and color of the class*/
+   @nameOfClass: extract(@thisTheoremEnvironment, 1);
+   @colorOfClass: extract(@thisTheoremEnvironment, 2);
 
    body {
-      counter-reset: @nameOfClass;
+      counter-reset: @nameOfClass;     /* The body needs to initialize all the counters. */
    }
    
    .@{nameOfClass} { 
@@ -58,14 +61,14 @@ We want to stop when the index reaches the end of the list of environments. */
    }
    .@{nameOfClass} > p:first-child:before
    {
-      content:"@{nameOfClass} " counter(@nameOfClass) ". ";
+      content:"@{nameOfClass} " counter(@nameOfClass) ". ";          
       display: inline;
       text-transform: capitalize;   /* CSS here only applies to one word, like "Theorem." or "Example." */
       font-weight: bold; 
    } 
 
-   /* Here we execute loop again, but with @index incremented by 2. */
-   .loop(@index + 2);
+   /* Here we execute loop again for the next entry. */
+   .loop(@index + 1);
 }
 
 /* This calls the loop with @index set to 1, thus starting the loop. Without this, all the code above would never run. */
