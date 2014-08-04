@@ -42,7 +42,7 @@ We want to stop when the index reaches the end of the list of environments. */
    @colorOfClass: extract(@theoremEnvironments, @index+1);
 
    body {
-      counter-reset: theorem@nameOfClass;
+      counter-reset: @nameOfClass;
    }
    
    .@{nameOfClass} { 
@@ -55,6 +55,7 @@ We want to stop when the index reaches the end of the list of environments. */
    }
    .@{nameOfClass} > p:first-child:before
    {
+      counter-increment: @nameOfClass;
       content:"@{nameOfClass} ";
       display: inline;
       text-transform: capitalize;   /* CSS here only applies to one word, like "Theorem." or "Example." */
